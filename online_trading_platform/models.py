@@ -11,11 +11,13 @@ class Merchant(models.Model):
     )
 
     name = models.CharField(max_length=100)
-    contacts = models.OneToOneField("Contact", on_delete=models.CASCADE)
+    contacts = models.OneToOneField(
+        "Contact", on_delete=models.SET_NULL, null=True, blank=True
+    )
     products = models.ManyToManyField("Product")
     supplier = models.ForeignKey(
         "self",
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
         null=True,
         blank=True,
         limit_choices_to={"type__lt": 4},
@@ -24,7 +26,7 @@ class Merchant(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     type = models.PositiveIntegerField(choices=TYPE_CHOICES)
 
-    def __str__(self) ->str:
+    def __str__(self) -> str:
         return self.name
 
 
@@ -40,7 +42,6 @@ class Contact(models.Model):
 
 
 class Product(models.Model):
-
     name = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
     release_date = models.DateField()
@@ -51,7 +52,7 @@ class Product(models.Model):
 
 class Employee(models.Model):
     merchant = models.ForeignKey(
-        Merchant, on_delete=models.CASCADE, null=True, blank=True
+        Merchant, on_delete=models.SET_NULL, null=True, blank=True
     )
     name = models.CharField(max_length=100)
     position = models.CharField(max_length=100)

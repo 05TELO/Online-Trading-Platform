@@ -17,7 +17,7 @@ class MerchantAdmin(admin.ModelAdmin):
 
     actions = ["clear_supplier_debt"]
 
-    def clear_supplier_debt(self, request, queryset):
+    def clear_supplier_debt(self, request, queryset) -> None:
         for obj in queryset:
             obj.debt_to_supplier = 0
             obj.save()

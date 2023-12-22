@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+
+  redis:
+    build:
+      context: ./redis/
+    container_name: app-redis
+    image: app-redis:latest
+    ports:
+      - "6379:6379"
+    restart: unless-stopped
+    networks:
+      - back_net
+
+networks:
+  back_net:
+    name: online_trading_platform.local
+    driver: bridge

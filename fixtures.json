@@ -1,0 +1,217 @@
+[
+    {
+      "model": "online_trading_platform.product",
+      "pk": 1,
+      "fields": {
+        "name": "iPhone 13 Pro",
+        "model": "A2645",
+        "release_date": "2021-09-14"
+      }
+    },
+    {
+      "model": "online_trading_platform.product",
+      "pk": 2,
+      "fields": {
+        "name": "Samsung Galaxy S21 Ultra",
+        "model": "SM-G998B",
+        "release_date": "2021-01-29"
+      }
+    },
+    {
+      "model": "online_trading_platform.product",
+      "pk": 3,
+      "fields": {
+        "name": "Google Pixel 6 Pro",
+        "model": "GP61",
+        "release_date": "2021-10-28"
+      }
+    },
+    {
+      "model": "online_trading_platform.product",
+      "pk": 4,
+      "fields": {
+        "name": "OnePlus 9 Pro",
+        "model": "LE2110",
+        "release_date": "2021-03-23"
+      }
+    },
+    {
+      "model": "online_trading_platform.product",
+      "pk": 5,
+      "fields": {
+        "name": "Xiaomi Mi 11 Ultra",
+        "model": "M2102K1G",
+        "release_date": "2021-04-16"
+      }
+    },
+    {
+        "model": "online_trading_platform.contact",
+        "pk": 1,
+        "fields": {
+          "email": "john.doe@example.com",
+          "country": "USA",
+          "city": "New York",
+          "street": "5th Avenue",
+          "house_number": "123"
+        }
+      },
+      {
+        "model": "online_trading_platform.contact",
+        "pk": 2,
+        "fields": {
+          "email": "jane.doe@example.com",
+          "country": "Canada",
+          "city": "Toronto",
+          "street": "Yonge Street",
+          "house_number": "456"
+        }
+      },
+      {
+        "model": "online_trading_platform.contact",
+        "pk": 3,
+        "fields": {
+          "email": "bob.smith@example.com",
+          "country": "UK",
+          "city": "London",
+          "street": "Oxford Street",
+          "house_number": "789"
+        }
+      },
+      {
+        "model": "online_trading_platform.contact",
+        "pk": 4,
+        "fields": {
+          "email": "alice.johnson@example.com",
+          "country": "Australia",
+          "city": "Sydney",
+          "street": "George Street",
+          "house_number": "1011"
+        }
+      },
+      {
+        "model": "online_trading_platform.contact",
+        "pk": 5,
+        "fields": {
+          "email": "david.jackson@example.com",
+          "country": "France",
+          "city": "Paris",
+          "street": "Champs-Élysées",
+          "house_number": "1213"
+        }
+      },
+      {
+        "model": "online_trading_platform.employee",
+        "pk": 1,
+        "fields": {
+          "merchant": null,
+          "name": "John Smith",
+          "position": "Manager",
+          "salary": "50000.00"
+        }
+      },
+      {
+        "model": "online_trading_platform.employee",
+        "pk": 2,
+        "fields": {
+          "merchant": 1,
+          "name": "Jane Doe",
+          "position": "Sales Representative",
+          "salary": "35000.00"
+        }
+      },
+      {
+        "model": "online_trading_platform.employee",
+        "pk": 3,
+        "fields": {
+          "merchant": 2,
+          "name": "Bob Johnson",
+          "position": "Accountant",
+          "salary": "45000.00"
+        }
+      },
+      {
+        "model": "online_trading_platform.employee",
+        "pk": 4,
+        "fields": {
+          "merchant": 3,
+          "name": "Alice Brown",
+          "position": "Marketing Specialist",
+          "salary": "40000.00"
+        }
+      },
+      {
+        "model": "online_trading_platform.employee",
+        "pk": 5,
+        "fields": {
+          "merchant": null,
+          "name": "David Lee",
+          "position": "Software Engineer",
+          "salary": "60000.00"
+        }
+      },
+      {
+        "model": "online_trading_platform.merchant",
+        "pk": 1,
+        "fields": {
+          "name": "Apple Inc.",
+          "contacts": 1,
+          "products": [1, 2, 3],
+          "supplier": null,
+          "debt_to_supplier": "0.00",
+          "created_at": "2022-01-01T00:00:00Z",
+          "type": 0
+        }
+      },
+      {
+        "model": "online_trading_platform.merchant",
+        "pk": 2,
+        "fields": {
+          "name": "Samsung Electronics",
+          "contacts": 2,
+          "products": [2, 3, 4],
+          "supplier": 1,
+          "debt_to_supplier": "5000.00",
+          "created_at": "2022-01-02T00:00:00Z",
+          "type": 1
+        }
+      },
+      {
+        "model": "online_trading_platform.merchant",
+        "pk": 3,
+        "fields": {
+          "name": "Amazon.com",
+          "contacts": 3,
+          "products": [1, 4, 5],
+          "supplier": 2,
+          "debt_to_supplier": "10000.00",
+          "created_at": "2022-01-03T00:00:00Z",
+          "type": 3
+        }
+      },
+      {
+        "model": "online_trading_platform.merchant",
+        "pk": 4,
+        "fields": {
+          "name": "Best Buy",
+          "contacts": 4,
+          "products": [3, 4, 5],
+          "supplier": 3,
+          "debt_to_supplier": "7500.00",
+          "created_at": "2022-01-04T00:00:00Z",
+          "type": 3
+        }
+      },
+      {
+        "model": "online_trading_platform.merchant",
+        "pk": 5,
+        "fields": {
+          "name": "John Smith",
+          "contacts": null,
+          "products": [1],
+          "supplier": null,
+          "debt_to_supplier": "0.00",
+          "created_at": "2022-01-05T00:00:00Z",
+          "type": 4
+        }
+      }
+]

@@ -1,14 +1,19 @@
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include
+from django.urls import path
 from rest_framework import routers
 
-from .views import MerchantViewSet, MerchantAboveAverageDebt, ProductViewSet, ContactViewSet, EmployeeViewSet
+from .views import ContactViewSet
+from .views import EmployeeViewSet
+from .views import MerchantAboveAverageDebt
+from .views import MerchantViewSet
+from .views import ProductViewSet
 
 router = routers.DefaultRouter()
-router.register(r'merchants', MerchantViewSet, basename='merchant')
-router.register(r'products', ProductViewSet, basename='product')
-router.register(r'contacts', ContactViewSet, basename='contact')
-router.register(r'employees', EmployeeViewSet, basename='employee')
+router.register(r"merchants", MerchantViewSet, basename="merchant")
+router.register(r"products", ProductViewSet, basename="product")
+router.register(r"contacts", ContactViewSet, basename="contact")
+router.register(r"employees", EmployeeViewSet, basename="employee")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
