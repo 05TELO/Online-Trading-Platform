@@ -1,4 +1,7 @@
+from typing import Any
+
 from django.db.models import Avg
+from django.db.models.query import QuerySet
 from rest_framework import generics
 from rest_framework import status
 from rest_framework import viewsets
@@ -15,11 +18,16 @@ from .serializers import MerchantSerializer
 from .serializers import ProductSerializer
 
 
+class HealthcheckView(generics.GenericAPIView):
+    def get(self, request: Request) -> Response:
+        return Response({"message": "healthy"})
+
+
 class MerchantViewSet(viewsets.ModelViewSet):
     queryset = Merchant.objects.all()
     serializer_class = MerchantSerializer
 
-    def get_queryset(self):
+    def get_queryset(self) -> QuerySet:
         queryset = super().get_queryset()
         country = self.request.query_params.get("country")
         product_id = self.request.query_params.get("product_id")
@@ -32,7 +40,7 @@ class MerchantViewSet(viewsets.ModelViewSet):
 
         return queryset
 
-    def create(self, request, *args, **kwargs) -> Response:
+    def create(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
@@ -46,7 +54,7 @@ class MerchantViewSet(viewsets.ModelViewSet):
             serializer.data, status=status.HTTP_201_CREATED, headers=headers
         )
 
-    def destroy(self, request, *args, **kwargs) -> Response:
+    def destroy(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         instance = self.get_object()
         self.perform_destroy(instance)
         return Response(
@@ -56,7 +64,7 @@ class MerchantViewSet(viewsets.ModelViewSet):
 
 
 class MerchantAboveAverageDebt(generics.ListAPIView):
-    def get(self, request: Request, format=None) -> Response:
+    def get(self, request: Request, format: None = None) -> Response:
         average_debt = Merchant.objects.aggregate(Avg("debt_to_supplier"))[
             "debt_to_supplier__avg"
         ]
@@ -75,7 +83,7 @@ class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
-    def destroy(self, request, *args, **kwargs) -> Response:
+    def destroy(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         instance = self.get_object()
         self.perform_destroy(instance)
         return Response(
@@ -88,7 +96,7 @@ class ContactViewSet(viewsets.ModelViewSet):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
 
-    def destroy(self, request, *args, **kwargs):
+    def destroy(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         instance = self.get_object()
         self.perform_destroy(instance)
         return Response(
@@ -101,7 +109,7 @@ class EmployeeViewSet(viewsets.ModelViewSet):
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
 
-    def destroy(self, request, *args, **kwargs):
+    def destroy(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         instance = self.get_object()
         self.perform_destroy(instance)
         return Response(

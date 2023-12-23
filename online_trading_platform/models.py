@@ -10,7 +10,7 @@ class Merchant(models.Model):
         (4, "Individual Entrepreneur"),
     )
 
-    name = models.CharField(max_length=100)
+    name = models.CharField()
     contacts = models.OneToOneField(
         "Contact", on_delete=models.SET_NULL, null=True, blank=True
     )
@@ -32,18 +32,18 @@ class Merchant(models.Model):
 
 class Contact(models.Model):
     email = models.EmailField()
-    country = models.CharField(max_length=100)
-    city = models.CharField(max_length=100)
-    street = models.CharField(max_length=100)
-    house_number = models.CharField(max_length=10)
+    country = models.CharField()
+    city = models.CharField()
+    street = models.CharField()
+    house_number = models.CharField()
 
     def __str__(self) -> str:
         return self.email
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=100)
-    model = models.CharField(max_length=100)
+    name = models.CharField()
+    model = models.CharField()
     release_date = models.DateField()
 
     def __str__(self) -> str:
@@ -54,8 +54,8 @@ class Employee(models.Model):
     merchant = models.ForeignKey(
         Merchant, on_delete=models.SET_NULL, null=True, blank=True
     )
-    name = models.CharField(max_length=100)
-    position = models.CharField(max_length=100)
+    name = models.CharField()
+    position = models.CharField()
     salary = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self) -> str:

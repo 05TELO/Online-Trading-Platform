@@ -24,7 +24,7 @@ def reduce_debt() -> None:
 
 
 @shared_task
-def clear_supplier_debt_async(ids):
+def clear_supplier_debt_async(ids: list) -> None:
     queryset = Merchant.objects.filter(id__in=ids)
     for obj in queryset:
         obj.debt_to_supplier = 0

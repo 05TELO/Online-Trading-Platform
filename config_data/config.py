@@ -13,6 +13,7 @@ class DjangoConfig:
     superuser_password: str
     superuser_email: str
 
+
 @dataclass
 class PostgreSqlConfig:
     db: str
@@ -22,10 +23,12 @@ class PostgreSqlConfig:
     user: str
     driver: str
 
+
 @dataclass
 class RedisConfig:
     broker_url: str
     backend: str
+
 
 @dataclass
 class Config:
@@ -57,6 +60,6 @@ def load_config(path: Optional[str]) -> Config:
         ),
         redis=RedisConfig(
             broker_url=env.str("CELERY_BROKER_URL"),
-            backend=env.str("CELERY_RESULT_BACKEND")
-        )
+            backend=env.str("CELERY_RESULT_BACKEND"),
+        ),
     )

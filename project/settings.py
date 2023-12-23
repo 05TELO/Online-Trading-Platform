@@ -1,4 +1,5 @@
 from pathlib import Path
+
 import dj_database_url
 
 from config_data import dirs
@@ -64,7 +65,7 @@ DATABASES = {
     "sqlite3": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
-    }
+    },
 }
 
 
@@ -93,7 +94,9 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
+
+STATIC_ROOT = dirs.DIR_STATIC
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"

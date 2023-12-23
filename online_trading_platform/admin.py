@@ -1,8 +1,9 @@
 from django.contrib import admin
-
-from .tasks import clear_supplier_debt_async
+from django.db.models.query import QuerySet
+from rest_framework.request import Request
 
 from . import models
+from .tasks import clear_supplier_debt_async
 
 
 @admin.register(models.Merchant)
@@ -15,20 +16,25 @@ class MerchantAdmin(admin.ModelAdmin):
         "created_at",
         "type",
     )
-    list_filter = ("contacts__city",)  # Фильтр по названию города
+    list_filter = ("contacts__city",)
 
     actions = ["clear_supplier_debt"]
 
-    def clear_supplier_debt(self, request, queryset):
+    def clear_supplier_debt(
+        self, request: Request, queryset: QuerySet
+    ) -> None:
         if queryset.count() > 20:
             ids = list(queryset.values_list("id", flat=True))
             clear_supplier_debt_async.delay(ids)
-            self.message_user(request, "Clear supplier debt task has been scheduled.")
+            self.message_user(
+                request, "Clear supplier debt task has been scheduled."
+            )
         else:
             for obj in queryset:
                 obj.debt_to_supplier = 0
                 obj.save()
             self.message_user(request, "Supplier debt has been cleared.")
+
 
 @admin.register(models.Contact)
 class ContactAdmin(admin.ModelAdmin):

@@ -12,3 +12,4 @@ __pycache__
 venv
 celerybeat-schedule
 postgres/db
+static

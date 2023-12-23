@@ -24,13 +24,61 @@ services:
       POSTGRES_PASSWORD: ${DB_PASS}
       POSTGRES_USER: ${DB_USER}
     image: app-postgresql:latest
-    init: true
     ports:
       - "5432:5432"
     networks:
       - back_net
     volumes:
       - ./postgres/db/data/:/var/lib/postgresql/data/:rw
+
+  webapp:
+    build:
+      context: .
+    container_name: webapp
+    restart: unless-stopped
+    entrypoint: /app/server-entrypoint.sh
+    env_file:
+      - .env
+    image: webapp:latest
+    init: true
+    networks:
+      - back_net
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./static:/app/static
+    healthcheck:
+      test: ["CMD-SHELL", "curl --fail http://localhost:8000/api/healthcheck/ || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      db:
+        condition: service_healthy
+
+  selery:
+    build:
+      context: .
+    container_name: app-selery
+    restart: unless-stopped
+    entrypoint: /app/worker-entrypoint.sh
+    env_file:
+      - .env
+    image: app-selery:latest
+    networks:
+      - back_net
+    volumes:
+      - ./static:/app/static
+    healthcheck:
+      test: ["CMD", "celery", "-A", "project", "inspect", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    depends_on:
+      webapp:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
 
 networks:
   back_net:
