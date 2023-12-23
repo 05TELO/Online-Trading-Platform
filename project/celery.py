@@ -11,9 +11,9 @@ app = Celery("project")
 app.config_from_object("django.conf:settings", namespace="CELERY")
 
 app.conf.beat_schedule = {
-    "run-every-3-hours": {
+    "run-every-3-hour": {
         "task": "online_trading_platform.tasks.increase_debt",
-        "schedule": crontab(hour="*/3"),
+        "schedule": crontab(minute=0, hour='*/3'),
     },
     'run-at-6:30-every-day': {
         'task': 'online_trading_platform.tasks.reduce_debt',

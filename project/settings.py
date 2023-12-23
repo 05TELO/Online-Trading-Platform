@@ -1,13 +1,18 @@
 from pathlib import Path
+import dj_database_url
+
+from config_data import dirs
+from config_data.config import load_config
+
+conf = load_config(str(dirs.DIR_REPO / ".env"))
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = (
-    "django-insecure-*m3&c(f&ewdv%8@@mb-1tqmo)-+b@%6%zfms-t3lm2z*zptk(-"
-)
+SECRET_KEY = conf.django.key
 
-DEBUG = True
+DEBUG = conf.django.debug
 
 ALLOWED_HOSTS = ["*"]
 
@@ -55,7 +60,8 @@ WSGI_APPLICATION = "project.wsgi.application"
 
 
 DATABASES = {
-    "default": {
+    "default": dj_database_url.parse(conf.django.db_url),
+    "sqlite3": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
@@ -80,7 +86,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Europe/Minsk"
 
 USE_I18N = True
 
@@ -93,5 +99,6 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
-CELERY_TIMEZONE = "UTC"
-CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_TIMEZONE = "Europe/Minsk"
+CELERY_BROKER_URL = conf.redis.broker_url
+CELERY_RESULT_BACKEND = conf.redis.backend

@@ -13,6 +13,25 @@ services:
     networks:
       - back_net
 
+  db:
+    build:
+      context: ./postgres/
+    container_name: app-postgresql
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_USER: ${DB_USER}
+    image: app-postgresql:latest
+    init: true
+    ports:
+      - "5432:5432"
+    networks:
+      - back_net
+    volumes:
+      - ./postgres/db/data/:/var/lib/postgresql/data/:rw
+
 networks:
   back_net:
     name: online_trading_platform.local

@@ -21,3 +21,11 @@ def reduce_debt() -> None:
         amount = randint(100, 10000)
         merchant.debt_to_supplier -= amount
         merchant.save()
+
+
+@shared_task
+def clear_supplier_debt_async(ids):
+    queryset = Merchant.objects.filter(id__in=ids)
+    for obj in queryset:
+        obj.debt_to_supplier = 0
+        obj.save()
