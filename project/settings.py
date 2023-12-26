@@ -17,6 +17,8 @@ DEBUG = conf.django.debug
 
 ALLOWED_HOSTS = ["*"]
 
+AUTH_USER_MODEL = "online_trading_platform.Employee"
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -26,6 +28,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
+    "rest_framework.authtoken",
     "online_trading_platform",
 ]
 
@@ -105,3 +108,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CELERY_TIMEZONE = "Europe/Minsk"
 CELERY_BROKER_URL = conf.redis.broker_url
 CELERY_RESULT_BACKEND = conf.redis.backend
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+}

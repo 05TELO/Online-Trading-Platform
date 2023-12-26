@@ -16,7 +16,7 @@ echo "Collect static files"
 poetry run python manage.py collectstatic --noinput
 
 echo "Database loaddata"
-poetry run python manage.py loaddata fixtures.json
+poetry run python manage.py loaddata users_modified.json
 
 echo "Creating superuser"
 poetry run python manage.py createsuperuser-ifnotexists

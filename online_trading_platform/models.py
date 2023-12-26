@@ -1,4 +1,11 @@
+from typing import Any
+
+from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import PermissionsMixin
+from django.core.exceptions import ValidationError
 from django.db import models
+
+from .managers import EmployeeManager
 
 
 class Merchant(models.Model):
@@ -20,11 +27,18 @@ class Merchant(models.Model):
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
-        limit_choices_to={"type__lt": 4},
     )
     debt_to_supplier = models.DecimalField(max_digits=10, decimal_places=2)
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     type = models.PositiveIntegerField(choices=TYPE_CHOICES)
+
+    def clean(self) -> None:
+        if self.supplier and self.supplier.type >= self.type:
+            raise ValidationError("Supplier must have a lower 'type' value.")
+
+    def save(self, *args: Any, **kwargs: Any) -> None:
+        self.clean()
+        return super().save(*args, **kwargs)
 
     def __str__(self) -> str:
         return self.name
@@ -50,13 +64,23 @@ class Product(models.Model):
         return self.name
 
 
-class Employee(models.Model):
+class Employee(AbstractBaseUser, PermissionsMixin):
+    username = models.CharField(unique=True)
     merchant = models.ForeignKey(
         Merchant, on_delete=models.SET_NULL, null=True, blank=True
     )
-    name = models.CharField()
-    position = models.CharField()
-    salary = models.DecimalField(max_digits=10, decimal_places=2)
+    position = models.CharField(null=True, blank=True)
+    salary = models.DecimalField(
+        max_digits=10, decimal_places=2, null=True, blank=True
+    )
+    is_staff = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=True)
+    is_superuser = models.BooleanField(default=False)
+
+    objects = EmployeeManager()
+
+    USERNAME_FIELD = "username"
+    REQUIRED_FIELDS: list = []
 
     def __str__(self) -> str:
-        return self.name
+        return self.username

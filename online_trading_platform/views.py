@@ -1,19 +1,20 @@
 from typing import Any
 
+from django.contrib.auth import authenticate
 from django.db.models import Avg
 from django.db.models.query import QuerySet
+from rest_framework import authentication
 from rest_framework import generics
+from rest_framework import permissions
 from rest_framework import status
 from rest_framework import viewsets
+from rest_framework.authtoken.models import Token
 from rest_framework.request import Request
 from rest_framework.response import Response
 
-from .models import Contact
-from .models import Employee
+from . import permissions as cust_perm
 from .models import Merchant
 from .models import Product
-from .serializers import ContactSerializer
-from .serializers import EmployeeSerializer
 from .serializers import MerchantSerializer
 from .serializers import ProductSerializer
 
@@ -26,11 +27,18 @@ class HealthcheckView(generics.GenericAPIView):
 class MerchantViewSet(viewsets.ModelViewSet):
     queryset = Merchant.objects.all()
     serializer_class = MerchantSerializer
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [
+        permissions.IsAuthenticated,
+        cust_perm.IsActiveEmployee,
+    ]
 
     def get_queryset(self) -> QuerySet:
         queryset = super().get_queryset()
         country = self.request.query_params.get("country")
         product_id = self.request.query_params.get("product_id")
+
+        #        queryset = queryset.filter(employee=self.request.user)
 
         if country:
             queryset = queryset.filter(contacts__country=country)
@@ -64,6 +72,9 @@ class MerchantViewSet(viewsets.ModelViewSet):
 
 
 class MerchantAboveAverageDebt(generics.ListAPIView):
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self, request: Request, format: None = None) -> Response:
         average_debt = Merchant.objects.aggregate(Avg("debt_to_supplier"))[
             "debt_to_supplier__avg"
@@ -82,6 +93,11 @@ class MerchantAboveAverageDebt(generics.ListAPIView):
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+    authentication_classes = [authentication.TokenAuthentication]
+    permission_classes = [
+        permissions.IsAuthenticated,
+        cust_perm.IsActiveEmployee,
+    ]
 
     def destroy(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         instance = self.get_object()
@@ -92,27 +108,18 @@ class ProductViewSet(viewsets.ModelViewSet):
         )
 
 
-class ContactViewSet(viewsets.ModelViewSet):
-    queryset = Contact.objects.all()
-    serializer_class = ContactSerializer
+class LoginView(generics.GenericAPIView):
+    def post(self, request: Request, *args: Any, **kwargs: Any) -> Response:
+        username = request.data.get("username")
+        password = request.data.get("password")
 
-    def destroy(self, request: Request, *args: Any, **kwargs: Any) -> Response:
-        instance = self.get_object()
-        self.perform_destroy(instance)
-        return Response(
-            {"message": "Contact deleted successfully"},
-            status=status.HTTP_204_NO_CONTENT,
-        )
+        user = authenticate(username=username, password=password)
 
-
-class EmployeeViewSet(viewsets.ModelViewSet):
-    queryset = Employee.objects.all()
-    serializer_class = EmployeeSerializer
-
-    def destroy(self, request: Request, *args: Any, **kwargs: Any) -> Response:
-        instance = self.get_object()
-        self.perform_destroy(instance)
-        return Response(
-            {"message": "Employee deleted successfully"},
-            status=status.HTTP_204_NO_CONTENT,
-        )
+        if user is not None:
+            token, created = Token.objects.get_or_create(user=user)
+            return Response({"token": token.key})
+        else:
+            return Response(
+                {"error": "Wrong Credentials"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )

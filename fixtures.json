@@ -45,173 +45,738 @@
       }
     },
     {
-        "model": "online_trading_platform.contact",
-        "pk": 1,
-        "fields": {
-          "email": "john.doe@example.com",
-          "country": "USA",
-          "city": "New York",
-          "street": "5th Avenue",
-          "house_number": "123"
-        }
-      },
-      {
-        "model": "online_trading_platform.contact",
-        "pk": 2,
-        "fields": {
-          "email": "jane.doe@example.com",
-          "country": "Canada",
-          "city": "Toronto",
-          "street": "Yonge Street",
-          "house_number": "456"
-        }
-      },
-      {
-        "model": "online_trading_platform.contact",
-        "pk": 3,
-        "fields": {
-          "email": "bob.smith@example.com",
-          "country": "UK",
-          "city": "London",
-          "street": "Oxford Street",
-          "house_number": "789"
-        }
-      },
-      {
-        "model": "online_trading_platform.contact",
-        "pk": 4,
-        "fields": {
-          "email": "alice.johnson@example.com",
-          "country": "Australia",
-          "city": "Sydney",
-          "street": "George Street",
-          "house_number": "1011"
-        }
-      },
-      {
-        "model": "online_trading_platform.contact",
-        "pk": 5,
-        "fields": {
-          "email": "david.jackson@example.com",
-          "country": "France",
-          "city": "Paris",
-          "street": "Champs-Élysées",
-          "house_number": "1213"
-        }
-      },
-      {
-        "model": "online_trading_platform.employee",
-        "pk": 1,
-        "fields": {
-          "merchant": null,
-          "name": "John Smith",
-          "position": "Manager",
-          "salary": "50000.00"
-        }
-      },
-      {
-        "model": "online_trading_platform.employee",
-        "pk": 2,
-        "fields": {
-          "merchant": 1,
-          "name": "Jane Doe",
-          "position": "Sales Representative",
-          "salary": "35000.00"
-        }
-      },
-      {
-        "model": "online_trading_platform.employee",
-        "pk": 3,
-        "fields": {
-          "merchant": 2,
-          "name": "Bob Johnson",
-          "position": "Accountant",
-          "salary": "45000.00"
-        }
-      },
-      {
-        "model": "online_trading_platform.employee",
-        "pk": 4,
-        "fields": {
-          "merchant": 3,
-          "name": "Alice Brown",
-          "position": "Marketing Specialist",
-          "salary": "40000.00"
-        }
-      },
-      {
-        "model": "online_trading_platform.employee",
-        "pk": 5,
-        "fields": {
-          "merchant": null,
-          "name": "David Lee",
-          "position": "Software Engineer",
-          "salary": "60000.00"
-        }
-      },
-      {
-        "model": "online_trading_platform.merchant",
-        "pk": 1,
-        "fields": {
-          "name": "Apple Inc.",
-          "contacts": 1,
-          "products": [1, 2, 3],
-          "supplier": null,
-          "debt_to_supplier": "0.00",
-          "created_at": "2022-01-01T00:00:00Z",
-          "type": 0
-        }
-      },
-      {
-        "model": "online_trading_platform.merchant",
-        "pk": 2,
-        "fields": {
-          "name": "Samsung Electronics",
-          "contacts": 2,
-          "products": [2, 3, 4],
-          "supplier": 1,
-          "debt_to_supplier": "5000.00",
-          "created_at": "2022-01-02T00:00:00Z",
-          "type": 1
-        }
-      },
-      {
-        "model": "online_trading_platform.merchant",
-        "pk": 3,
-        "fields": {
-          "name": "Amazon.com",
-          "contacts": 3,
-          "products": [1, 4, 5],
-          "supplier": 2,
-          "debt_to_supplier": "10000.00",
-          "created_at": "2022-01-03T00:00:00Z",
-          "type": 3
-        }
-      },
-      {
-        "model": "online_trading_platform.merchant",
-        "pk": 4,
-        "fields": {
-          "name": "Best Buy",
-          "contacts": 4,
-          "products": [3, 4, 5],
-          "supplier": 3,
-          "debt_to_supplier": "7500.00",
-          "created_at": "2022-01-04T00:00:00Z",
-          "type": 3
-        }
-      },
-      {
-        "model": "online_trading_platform.merchant",
-        "pk": 5,
-        "fields": {
-          "name": "John Smith",
-          "contacts": null,
-          "products": [1],
-          "supplier": null,
-          "debt_to_supplier": "0.00",
-          "created_at": "2022-01-05T00:00:00Z",
-          "type": 4
-        }
+      "model": "online_trading_platform.contact",
+      "pk": 1,
+      "fields": {
+        "email": "vharmon@gmail.com",
+        "country": "Bouvet Island (Bouvetoya)",
+        "city": "Lake Eric",
+        "street": "Kent Junctions",
+        "house_number": 1058
       }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 2,
+      "fields": {
+        "email": "carolynweber@yahoo.com",
+        "country": "Belgium",
+        "city": "Matthewberg",
+        "street": "Derek Ridges",
+        "house_number": 473
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 3,
+      "fields": {
+        "email": "marie91@yahoo.com",
+        "country": "Portugal",
+        "city": "New Craig",
+        "street": "Luis Hill",
+        "house_number": 1452
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 4,
+      "fields": {
+        "email": "norma31@yahoo.com",
+        "country": "Qatar",
+        "city": "Port Stephentown",
+        "street": "Lester Vista",
+        "house_number": 8859
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 5,
+      "fields": {
+        "email": "patricia45@gmail.com",
+        "country": "Kyrgyz Republic",
+        "city": "Terryborough",
+        "street": "Alex Summit",
+        "house_number": 3786
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 6,
+      "fields": {
+        "email": "carmen82@hotmail.com",
+        "country": "Sierra Leone",
+        "city": "Port Christopherport",
+        "street": "Amanda Spring",
+        "house_number": 7318
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 7,
+      "fields": {
+        "email": "jeremyday@hotmail.com",
+        "country": "Iran",
+        "city": "Guzmanburgh",
+        "street": "Danny Shores",
+        "house_number": 4366
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 8,
+      "fields": {
+        "email": "valdezkevin@gmail.com",
+        "country": "Cameroon",
+        "city": "New Anneburgh",
+        "street": "Reyes View",
+        "house_number": 2159
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 9,
+      "fields": {
+        "email": "craigchristian@gmail.com",
+        "country": "Saint Kitts and Nevis",
+        "city": "Lake James",
+        "street": "Charles Loop",
+        "house_number": 176
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 10,
+      "fields": {
+        "email": "david23@hotmail.com",
+        "country": "North Macedonia",
+        "city": "Leonardshire",
+        "street": "Morrison Island",
+        "house_number": 6902
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 11,
+      "fields": {
+        "email": "lisa31@hotmail.com",
+        "country": "Taiwan",
+        "city": "North Kellyburgh",
+        "street": "Natalie Points",
+        "house_number": 9513
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 12,
+      "fields": {
+        "email": "russellmichael@gmail.com",
+        "country": "Grenada",
+        "city": "South Stephenland",
+        "street": "Benjamin Shoal",
+        "house_number": 7624
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 13,
+      "fields": {
+        "email": "diane71@gmail.com",
+        "country": "Trinidad and Tobago",
+        "city": "East Lindamouth",
+        "street": "Debra Lane",
+        "house_number": 4642
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 14,
+      "fields": {
+        "email": "griffindevin@yahoo.com",
+        "country": "Nigeria",
+        "city": "New Sarah",
+        "street": "Marcus Center",
+        "house_number": 2857
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 15,
+      "fields": {
+        "email": "alison37@gmail.com",
+        "country": "Christmas Island",
+        "city": "Zacharyfort",
+        "street": "Ryan Greens",
+        "house_number": 3573
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 16,
+      "fields": {
+        "email": "bmorales@gmail.com",
+        "country": "Aruba",
+        "city": "Alexanderstad",
+        "street": "Sean Alley",
+        "house_number": 4622
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 17,
+      "fields": {
+        "email": "amarsh@gmail.com",
+        "country": "Jersey",
+        "city": "West Courtney",
+        "street": "Wheeler Station",
+        "house_number": 100
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 18,
+      "fields": {
+        "email": "michellebarnes@hotmail.com",
+        "country": "Portugal",
+        "city": "South Susan",
+        "street": "Randall Pass",
+        "house_number": 9469
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 19,
+      "fields": {
+        "email": "berrygail@hotmail.com",
+        "country": "Morocco",
+        "city": "New Heather",
+        "street": "Jonathan Walks",
+        "house_number": 8878
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 20,
+      "fields": {
+        "email": "alex87@gmail.com",
+        "country": "Sao Tome and Principe",
+        "city": "West Peter",
+        "street": "Michael Springs",
+        "house_number": 8059
+      }
+    },
+    {
+      "model": "online_trading_platform.contact",
+      "pk": 21,
+      "fields": {
+        "email": "sierraphillips@hotmail.com",
+        "country": "Northern Mariana Islands",
+        "city": "Port Donnaland",
+        "street": "Stephen Views",
+        "house_number": 1646
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 1,
+      "fields": {
+        "name": "Mcguire-Rogers",
+        "contacts": 1,
+        "products": [
+          2
+        ],
+        "supplier": null,
+        "debt_to_supplier": 540,
+        "created_at": null,
+        "type": 2
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 2,
+      "fields": {
+        "name": "Brown-Patterson",
+        "contacts": 2,
+        "products": [
+          2
+        ],
+        "supplier": null,
+        "debt_to_supplier": 523,
+        "created_at": null,
+        "type": 0
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 3,
+      "fields": {
+        "name": "Middleton Ltd",
+        "contacts": 3,
+        "products": [
+          5
+        ],
+        "supplier": null,
+        "debt_to_supplier": 478,
+        "created_at": null,
+        "type": 0
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 4,
+      "fields": {
+        "name": "Mitchell-Williams",
+        "contacts": 4,
+        "products": [
+          5
+        ],
+        "supplier": 3,
+        "debt_to_supplier": 298,
+        "created_at": null,
+        "type": 3
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 5,
+      "fields": {
+        "name": "Wright Ltd",
+        "contacts": 5,
+        "products": [
+          4
+        ],
+        "supplier": 3,
+        "debt_to_supplier": 797,
+        "created_at": null,
+        "type": 3
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 6,
+      "fields": {
+        "name": "Williams Group",
+        "contacts": 6,
+        "products": [
+          5
+        ],
+        "supplier": 5,
+        "debt_to_supplier": 419,
+        "created_at": null,
+        "type": 4
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 7,
+      "fields": {
+        "name": "Patton and Sons",
+        "contacts": 7,
+        "products": [
+          1
+        ],
+        "supplier": 5,
+        "debt_to_supplier": 78,
+        "created_at": null,
+        "type": 4
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 8,
+      "fields": {
+        "name": "Brown, Smith and Smith",
+        "contacts": 8,
+        "products": [
+          2
+        ],
+        "supplier": 9,
+        "debt_to_supplier": 594,
+        "created_at": null,
+        "type": 2
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 9,
+      "fields": {
+        "name": "Hernandez, Mullins and Tucker",
+        "contacts": 9,
+        "products": [
+          1
+        ],
+        "supplier": null,
+        "debt_to_supplier": 405,
+        "created_at": null,
+        "type": 1
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 10,
+      "fields": {
+        "name": "Pollard LLC",
+        "contacts": 10,
+        "products": [
+          4
+        ],
+        "supplier": 9,
+        "debt_to_supplier": 538,
+        "created_at": null,
+        "type": 3
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 11,
+      "fields": {
+        "name": "Malone, Stewart and Mitchell",
+        "contacts": 11,
+        "products": [
+          5
+        ],
+        "supplier": 10,
+        "debt_to_supplier": 497,
+        "created_at": null,
+        "type": 4
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 12,
+      "fields": {
+        "name": "Edwards, Ballard and Kramer",
+        "contacts": 12,
+        "products": [
+          4
+        ],
+        "supplier": null,
+        "debt_to_supplier": 752,
+        "created_at": null,
+        "type": 2
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 13,
+      "fields": {
+        "name": "Potts LLC",
+        "contacts": 13,
+        "products": [
+          3
+        ],
+        "supplier": 12,
+        "debt_to_supplier": 206,
+        "created_at": null,
+        "type": 3
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 14,
+      "fields": {
+        "name": "Richard Ltd",
+        "contacts": 14,
+        "products": [
+          1
+        ],
+        "supplier": null,
+        "debt_to_supplier": 136,
+        "created_at": null,
+        "type": 0
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 15,
+      "fields": {
+        "name": "Meyer, Adams and Parks",
+        "contacts": 15,
+        "products": [
+          1
+        ],
+        "supplier": 14,
+        "debt_to_supplier": 155,
+        "created_at": null,
+        "type": 3
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 16,
+      "fields": {
+        "name": "Bernard, Zimmerman and Bates",
+        "contacts": 16,
+        "products": [
+          3
+        ],
+        "supplier": 17,
+        "debt_to_supplier": 817,
+        "created_at": null,
+        "type": 1
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 17,
+      "fields": {
+        "name": "Parker-David",
+        "contacts": 17,
+        "products": [
+          3
+        ],
+        "supplier": null,
+        "debt_to_supplier": 254,
+        "created_at": null,
+        "type": 0
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 18,
+      "fields": {
+        "name": "Crane Ltd",
+        "contacts": 18,
+        "products": [
+          2
+        ],
+        "supplier": 17,
+        "debt_to_supplier": 791,
+        "created_at": null,
+        "type": 2
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 19,
+      "fields": {
+        "name": "Hensley PLC",
+        "contacts": 19,
+        "products": [
+          2
+        ],
+        "supplier": 17,
+        "debt_to_supplier": 819,
+        "created_at": null,
+        "type": 2
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 20,
+      "fields": {
+        "name": "Harrison-Hodges",
+        "contacts": 20,
+        "products": [
+          3
+        ],
+        "supplier": 17,
+        "debt_to_supplier": 70,
+        "created_at": null,
+        "type": 2
+      }
+    },
+    {
+      "model": "online_trading_platform.merchant",
+      "pk": 21,
+      "fields": {
+        "name": "Cruz, Sellers and Murray",
+        "contacts": 21,
+        "products": [
+          4
+        ],
+        "supplier": 20,
+        "debt_to_supplier": 952,
+        "created_at": null,
+        "type": 4
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 1,
+      "fields": {
+        "username": "Gregory Vasquez",
+        "password": "uQ22Sw0t",
+        "merchant": 9
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 2,
+      "fields": {
+        "username": "Emily Vazquez",
+        "password": "6JPqZkKk",
+        "merchant": 4
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 3,
+      "fields": {
+        "username": "Rebecca Weiss",
+        "password": "0UUiLPgp",
+        "merchant": 9
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 4,
+      "fields": {
+        "username": "Billy Ryan",
+        "password": "j2SxgKAX",
+        "merchant": 10
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 5,
+      "fields": {
+        "username": "Eric Johnson",
+        "password": "Mr4ZXzjC",
+        "merchant": 9
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 6,
+      "fields": {
+        "username": "Diana Parrish",
+        "password": "0iEu7Gzo",
+        "merchant": 17
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 7,
+      "fields": {
+        "username": "Eileen Colon",
+        "password": "Wef5fYgL",
+        "merchant": 3
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 8,
+      "fields": {
+        "username": "Joshua Simmons",
+        "password": "X2UYtKUU",
+        "merchant": 9
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 9,
+      "fields": {
+        "username": "Brandon Knapp",
+        "password": "nH7hDjf9",
+        "merchant": 17
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 10,
+      "fields": {
+        "username": "Jenna Hicks",
+        "password": "n4mmVZxf",
+        "merchant": 4
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 11,
+      "fields": {
+        "username": "Margaret Stokes",
+        "password": "Z2W61xTr",
+        "merchant": 18
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 12,
+      "fields": {
+        "username": "James Cook",
+        "password": "yq0Rhwqt",
+        "merchant": 6
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 13,
+      "fields": {
+        "username": "David Greene",
+        "password": "2cHs8E0n",
+        "merchant": 9
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 14,
+      "fields": {
+        "username": "Kimberly Morris",
+        "password": "4TJ1hWFc",
+        "merchant": 14
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 15,
+      "fields": {
+        "username": "Juan Ramirez",
+        "password": "7hE7VJCz",
+        "merchant": 15
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 16,
+      "fields": {
+        "username": "Brittany Kim",
+        "password": "yd9zOxQr",
+        "merchant": 17
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 17,
+      "fields": {
+        "username": "Alexander Salas",
+        "password": "0L4lrDEo",
+        "merchant": 6
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 18,
+      "fields": {
+        "username": "Cody Smith",
+        "password": "H25SHayb",
+        "merchant": 13
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 19,
+      "fields": {
+        "username": "Jessica Sharp",
+        "password": "57mTQy6Q",
+        "merchant": 19
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 20,
+      "fields": {
+        "username": "Charlotte Nichols",
+        "password": "9z1Q5f6x",
+        "merchant": 7
+      }
+    },
+    {
+      "model": "online_trading_platform.employee",
+      "pk": 21,
+      "fields": {
+        "username": "Ryan Rodriguez",
+        "password": "dG8LvFhd",
+        "merchant": 17
+      }
+    }
 ]
