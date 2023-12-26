@@ -10,6 +10,7 @@
 ## Usage
 
 After successful build & run, you can open http://localhost:8000/api/
+Admin http://localhost:8000/api/admin/
 
 ---
 
@@ -24,6 +25,11 @@ Before doing something, make sure that you have
 
 > docker-compose up --build
 
+## Run Project
+
+> docker-compose up
+
+---
 
 ## Tests
 
