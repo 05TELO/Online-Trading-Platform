@@ -1,8 +1,7 @@
 from typing import Any
 
 from django.contrib.auth import authenticate
-from django.db.models import Avg
-from django.db.models.query import QuerySet
+from django.db.models import Avg, Window, F
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import authentication
 from rest_framework import generics
@@ -62,20 +61,19 @@ class MerchantViewSet(viewsets.ModelViewSet):
 
 
 class MerchantAboveAverageDebt(generics.ListAPIView):
+    serializer_class = MerchantSerializer
     authentication_classes = [authentication.TokenAuthentication]
     permission_classes = [permissions.IsAuthenticated]
 
-    def get(self, request: Request, format: None = None) -> Response:
-        average_debt = Merchant.objects.aggregate(Avg("debt_to_supplier"))[
-            "debt_to_supplier__avg"
-        ]
-        merchants_above_average_debt = Merchant.objects.filter(
-            debt_to_supplier__gt=average_debt
-        )
-        if merchants_above_average_debt:
-            serializer = MerchantSerializer(
-                merchants_above_average_debt, many=True
-            )
+    def get_queryset(self):
+        return Merchant.objects.annotate(
+            avg_debt=Window(expression=Avg('debt_to_supplier'))
+        ).filter(debt_to_supplier__gt=F('avg_debt'))
+
+    def list(self, request: Request, *args: Any, **kwargs: Any) -> Response:
+        queryset = self.get_queryset()
+        if queryset:
+            serializer = self.get_serializer(queryset, many=True)
             return Response(serializer.data)
         return Response({"message": "No merchants with above average debt"})
 
