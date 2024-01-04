@@ -23,7 +23,7 @@ class MerchantAdmin(admin.ModelAdmin):
         "created_at",
         "type",
     )
-    list_filter = ("contacts__country",)
+    list_filter = ("contacts__city",)
 
     actions = ["clear_supplier_debt"]
 

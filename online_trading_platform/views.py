@@ -3,6 +3,7 @@ from typing import Any
 from django.contrib.auth import authenticate
 from django.db.models import Avg
 from django.db.models.query import QuerySet
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import authentication
 from rest_framework import generics
 from rest_framework import permissions
@@ -11,6 +12,8 @@ from rest_framework import viewsets
 from rest_framework.authtoken.models import Token
 from rest_framework.request import Request
 from rest_framework.response import Response
+
+from online_trading_platform.filters import MerchantFilter
 
 from . import permissions as cust_perm
 from .models import Merchant
@@ -32,21 +35,8 @@ class MerchantViewSet(viewsets.ModelViewSet):
         permissions.IsAuthenticated,
         cust_perm.IsActiveEmployee,
     ]
-
-    def get_queryset(self) -> QuerySet:
-        queryset = super().get_queryset()
-        country = self.request.query_params.get("country")
-        product_id = self.request.query_params.get("product_id")
-
-        #        queryset = queryset.filter(employee=self.request.user)
-
-        if country:
-            queryset = queryset.filter(contacts__country=country)
-
-        if product_id:
-            queryset = queryset.filter(products__id=product_id)
-
-        return queryset
+    filter_backends = [DjangoFilterBackend]
+    filterset_class = MerchantFilter
 
     def create(self, request: Request, *args: Any, **kwargs: Any) -> Response:
         serializer = self.get_serializer(data=request.data)
